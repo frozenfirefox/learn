@@ -16,7 +16,6 @@ use think\Container;
 use think\exception\HttpResponseException;
 use think\exception\ValidateException;
 use think\Response;
-use think\Validate;
 
 class RestBaseController
 {
@@ -63,10 +62,10 @@ class RestBaseController
      */
     public function __construct(App $app = null)
     {
-        $this->app     = $app ?: app();
-        $this->request = $this->app->request;
+        $this->app     = $app ?: Container::get('app');
+        $this->request = $this->app['request'];
 
-//        $this->request->root(cmf_get_root() . '/');
+        $this->request->root(cmf_get_root() . '/');
 
         $this->apiVersion = $this->request->header('XX-Api-Version');
 
@@ -182,34 +181,40 @@ class RestBaseController
     protected function validate($data, $validate, $message = [], $batch = false, $callback = null)
     {
         if (is_array($validate)) {
-            $v = new Validate();
+            $v = $this->app->validate();
             $v->rule($validate);
         } else {
             if (strpos($validate, '.')) {
                 // 支持场景
-                [$validate, $scene] = explode('.', $validate);
+                list($validate, $scene) = explode('.', $validate);
             }
-            $class = false !== strpos($validate, '\\') ? $validate : $this->app->parseClass('validate', $validate . 'Validate');
-            $v     = new $class();
+            $v = $this->app->validate($validate);
             if (!empty($scene)) {
                 $v->scene($scene);
             }
         }
-
-        $v->message($message);
-
         // 是否批量验证
         if ($batch || $this->batchValidate) {
             $v->batch(true);
         }
 
-        $result = $v->failException(false)->check($data);
-
-        if (!$result) {
-            $result = $v->getError();
+        if (is_array($message)) {
+            $v->message($message);
         }
 
-        return $result;
+        if ($callback && is_callable($callback)) {
+            call_user_func_array($callback, [$v, &$data]);
+        }
+
+        if (!$v->check($data)) {
+            if ($this->failException) {
+                throw new ValidateException($v->getError());
+            } else {
+                return $v->getError();
+            }
+        } else {
+            return true;
+        }
     }
 
     /**

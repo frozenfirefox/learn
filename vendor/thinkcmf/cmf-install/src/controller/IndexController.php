@@ -15,7 +15,7 @@ use app\admin\logic\MenuLogic;
 use app\admin\model\ThemeModel;
 use app\user\logic\UserActionLogic;
 use cmf\controller\BaseController;
-use think\facade\Db;
+use think\Db;
 use think\facade\Lang;
 
 require_once __DIR__ . '/../common.php';
@@ -29,32 +29,19 @@ class IndexController extends BaseController
         }
 
         if (!is_writable(CMF_DATA)) {
-            echo '目录' . realpath(CMF_ROOT . 'data') . '无法写入！';
             abort(500, '目录' . realpath(CMF_ROOT . 'data') . '无法写入！');
         }
 
-        $langSet = $this->app->lang->getLangSet();
-        $this->app->lang->load([
+        $langSet = request()->langset();
+        Lang::load([
             dirname(__DIR__) . '/lang/' . $langSet . ".php"
         ]);
-
 
     }
 
     protected function _initializeView()
     {
-        $root           = cmf_get_root();
-        $viewReplaceStr = [
-            '__ROOT__'     => $root,
-//            '__TMPL__'     => "{$root}/{$themePath}",
-            '__STATIC__'   => "{$root}/static",
-            '__WEB_ROOT__' => $root
-        ];
-        $this->view->engine()->config([
-            'view_path'          => dirname(__DIR__) . '/view/',
-            'tpl_replace_string' => $viewReplaceStr
-        ]);
-//        config('template.view_path', dirname(__DIR__) . '/view/');
+        config('template.view_path', dirname(__DIR__) . '/view/');
     }
 
     // 安装首页
@@ -214,11 +201,10 @@ class IndexController extends BaseController
             strlen($userPass) < 6 && $this->error("密码长度最少6位");
             strlen($userPass) > 32 && $this->error("密码长度最多32位");
 
-            $this->updateDbConfig($dbConfig);
-            $db     = Db::connect('install_db');
+            $db     = Db::connect($dbConfig);
             $dbName = $this->request->param('dbname');
             $sql    = "CREATE DATABASE IF NOT EXISTS `{$dbName}` DEFAULT CHARACTER SET " . $dbConfig['charset'];
-            $db->execute($sql) || $this->error($db->getError());
+            $db->execute($sql);
 
             $dbConfig['database'] = $dbName;
 
@@ -276,8 +262,7 @@ class IndexController extends BaseController
 
         $sqlIndex = $this->request->param('sql_index', 0, 'intval');
 
-        $this->updateDbConfig($dbConfig);
-        $db = Db::connect('install_db');
+        $db = Db::connect($dbConfig);
 
         if ($sqlIndex >= count($sql)) {
             $installError = session('install.error');
@@ -412,12 +397,11 @@ class IndexController extends BaseController
             $dbConfig         = $this->request->param();
             $dbConfig['type'] = "mysql";
 
-            $this->updateDbConfig($dbConfig);
-
             $supportInnoDb = false;
 
             try {
-                $engines = Db::connect('install_db')->query("SHOW ENGINES;");
+//                Db::connect($dbConfig)->query("SELECT VERSION();");
+                $engines = Db::connect($dbConfig)->query("SHOW ENGINES;");
 
                 foreach ($engines as $engine) {
                     if ($engine['Engine'] == 'InnoDB' && $engine['Support'] != 'NO') {
@@ -439,29 +423,49 @@ class IndexController extends BaseController
 
     }
 
+    public function testDataExist()
+    {
+        if ($this->request->isPost()) {
+            $dbConfig         = $this->request->param();
+            $dbConfig['type'] = "mysql";
+            $canCreateDbAndImportData = false;
+
+            
+
+
+            try {
+                //检查 cmf_admin_menu  
+                $table = $dbConfig['dbprefix']."admin_menu";
+                // Db::connect($dbConfig)->query("use ".$dbConfig['dbname'].";");
+                $tableExist = Db::connect($dbConfig)->query("show tables like '".$table."';");
+                if($tableExist){
+                    $dataExist = Db::connect($dbConfig)->query("select * from ".$table." where 1;");
+                    //存在数据，则警告
+                    if(is_array($dataExist) && count($dataExist) >0){
+                        $canCreateDbAndImportData = false;
+                    }else{
+                        $canCreateDbAndImportData = true;
+                    }
+                }else{
+                    $canCreateDbAndImportData = true;
+                }
+            } catch (\Exception $e) {
+                $this->success('验证成功！');
+            }
+            if ($canCreateDbAndImportData) {
+                $this->success('验证成功！');
+            } else {
+                $this->error('配置的数据库存在数据,请更换数据库或者清空数据');
+            }
+        } else {
+            $this->error('非法请求方式！');
+        }
+
+    }
+
     public function testRewrite()
     {
         $this->success('success');
-    }
-
-    /**
-     * 加载模板输出
-     * @access protected
-     * @param string $template 模板文件名
-     * @param array  $vars     模板输出变量
-     * @param array  $config   模板参数
-     * @return mixed
-     */
-    protected function fetch($template = '', $vars = [], $config = [])
-    {
-        return $this->view->fetch($template, $vars, $config);;
-    }
-
-    private function updateDbConfig($dbConfig)
-    {
-        $oldDbConfig                              = config('database');
-        $oldDbConfig['connections']['install_db'] = $dbConfig;
-        config($oldDbConfig, 'database');
     }
 
 }

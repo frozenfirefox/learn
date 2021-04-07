@@ -16,7 +16,6 @@ use think\exception\ValidateException;
 use think\facade\Config;
 use think\Loader;
 use think\exception\TemplateNotFoundException;
-use think\Validate;
 
 class PluginBaseController extends BaseController
 {
@@ -39,8 +38,8 @@ class PluginBaseController extends BaseController
      */
     public function __construct()
     {
-        $this->app     = app();
-        $this->request = request();
+        $this->app     = Container::get('app');
+        $this->request = $this->app['request'];
 
         $this->getPlugin();
 
@@ -120,7 +119,7 @@ class PluginBaseController extends BaseController
     private function parseTemplate($template)
     {
         // 分析模板文件规则
-        $viewEngineConfig = config('view');
+        $viewEngineConfig = Config::get('template.');
 
         $path = $this->plugin->getThemeRoot();
 
@@ -132,7 +131,7 @@ class PluginBaseController extends BaseController
 
         if (0 !== strpos($template, '/')) {
             $template   = str_replace(['/', ':'], $depr, $template);
-            $controller = cmf_parse_name($controller);
+            $controller = Loader::parseName($controller);
             if ($controller) {
                 if ('' == $template) {
                     // 如果模板文件名为空 按照默认规则定位
@@ -196,38 +195,43 @@ class PluginBaseController extends BaseController
      * @return array|string|true
      * @throws ValidateException
      */
-    protected function validate(array $data, $validate, array $message = [], bool $batch = false)
+    protected function validate($data, $validate, $message = [], $batch = false, $callback = null)
     {
         if (is_array($validate)) {
-            $v = new Validate();
+            $v = $this->app->validate();
             $v->rule($validate);
         } else {
             if (strpos($validate, '.')) {
                 // 支持场景
-                [$validate, $scene] = explode('.', $validate);
+                list($validate, $scene) = explode('.', $validate);
             }
-            $class = false !== strpos($validate, '\\') ? $validate : '\\plugins\\' . cmf_parse_name($this->plugin->getName()) . '\\validate\\' . $validate . 'Validate';
-            $v     = new $class();
+            $v = $this->app->validate('\\plugins\\' . cmf_parse_name($this->plugin->getName()) . '\\validate\\' . $validate . 'Validate');
             if (!empty($scene)) {
                 $v->scene($scene);
             }
         }
-
-        $v->message($message);
 
         // 是否批量验证
         if ($batch || $this->batchValidate) {
             $v->batch(true);
         }
 
-        $result = $v->failException(false)->check($data);
-
-        if (!$result) {
-            $result = $v->getError();
+        if (is_array($message)) {
+            $v->message($message);
         }
 
-        return $result;
+        if ($callback && is_callable($callback)) {
+            call_user_func_array($callback, [$v, &$data]);
+        }
 
+        if (!$v->check($data)) {
+            if ($this->failException) {
+                throw new ValidateException($v->getError());
+            }
+            return $v->getError();
+        }
+
+        return true;
     }
 
 }

@@ -90,7 +90,7 @@ function sp_execute_sql($db, $sql)
 
 /**
  * 显示提示信息
- * @param string $msg 提示信息
+ * @param  string $msg 提示信息
  */
 function sp_show_msg($msg, $class = '')
 {
@@ -153,7 +153,7 @@ function sp_create_db_config($config)
         }
 
         if (strpos(cmf_version(), '5.0.') === false) {
-            $confDir = CMF_DATA . 'config/'; // 5.1 || 6.0
+            $confDir = CMF_DATA . 'config/'; // 5.1
         } else {
             $confDir = CMF_DATA . 'conf/'; // 5.0
         }

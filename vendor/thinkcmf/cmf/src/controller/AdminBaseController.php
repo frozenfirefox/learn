@@ -10,7 +10,8 @@
 // +----------------------------------------------------------------------
 namespace cmf\controller;
 
-use app\admin\model\UserModel;
+use cmf\model\UserModel;
+use think\Db;
 
 class AdminBaseController extends BaseController
 {
@@ -30,7 +31,7 @@ class AdminBaseController extends BaseController
             $this->assign("admin", $user);
         } else {
             if ($this->request->isPost()) {
-                $this->error("您还没有登录！", url("admin/Public/login"));
+                $this->error("您还没有登录！", url("admin/public/login"));
             } else {
                 return $this->redirect(url("admin/Public/login"));
             }
@@ -39,18 +40,8 @@ class AdminBaseController extends BaseController
 
     public function _initializeView()
     {
-        $this->updateViewConfig();
-    }
-
-    private function updateViewConfig($defaultTheme = '', $viewBase = '')
-    {
-        $cmfAdminThemePath = config('template.cmf_admin_theme_path');
-
-        if (empty($defaultTheme)) {
-            $cmfAdminDefaultTheme = cmf_get_current_admin_theme();
-        } else {
-            $cmfAdminDefaultTheme = $defaultTheme;
-        }
+        $cmfAdminThemePath    = config('template.cmf_admin_theme_path');
+        $cmfAdminDefaultTheme = cmf_get_current_admin_theme();
 
         $themePath = "{$cmfAdminThemePath}{$cmfAdminDefaultTheme}";
 
@@ -75,91 +66,8 @@ class AdminBaseController extends BaseController
             ];
         }
 
-        if (empty($viewBase)) {
-            $viewBase = WEB_ROOT . $themePath . '/';
-        }
-
-        $this->view->engine()->config([
-            'view_base'          => $viewBase,
-            'tpl_replace_string' => $viewReplaceStr
-        ]);
-    }
-
-    /**
-     * 加载模板输出
-     * @access protected
-     * @param string $template 模板文件名
-     * @param array  $vars     模板输出变量
-     * @param array  $config   模板参数
-     * @return mixed
-     */
-    protected function fetch($template = '', $vars = [], $config = [])
-    {
-        $template = $this->parseTemplate($template);
-        $content = $this->view->fetch($template, $vars, $config);
-
-        return $content;
-    }
-
-    /**
-     * 自动定位模板文件
-     * @access private
-     * @param string $template 模板文件规则
-     * @return string
-     */
-    private function parseTemplate($template)
-    {
-        // 分析模板文件规则
-        $request = $this->request;
-        // 获取视图根目录
-        if (strpos($template, '@')) {
-            // 跨模块调用
-            list($app, $template) = explode('@', $template);
-        }
-
-        $cmfAdminThemePath    = config('template.cmf_admin_theme_path');
-        $cmfAdminDefaultTheme = cmf_get_current_admin_theme();
-        $themePath            = "{$cmfAdminThemePath}{$cmfAdminDefaultTheme}/";
-
-        // 基础视图目录
-        $app = isset($app) ? $app : $this->app->http->getName();
-//        $path = $themePath . ($app ? $app . DIRECTORY_SEPARATOR : '');
-
-        $depr = config('view.view_depr');
-        if (0 !== strpos($template, '/')) {
-            $template   = str_replace(['/', ':'], $depr, $template);
-            $controller = cmf_parse_name($request->controller());
-            if ($controller) {
-                if ('' == $template) {
-                    // 如果模板文件名为空 按照默认规则定位
-                    $template = str_replace('.', DIRECTORY_SEPARATOR, $controller) . $depr . cmf_parse_name($request->action(false));
-                } elseif (false === strpos($template, $depr)) {
-                    $template = str_replace('.', DIRECTORY_SEPARATOR, $controller) . $depr . $template;
-                }
-            }
-        } else {
-            $template = str_replace(['/', ':'], $depr, substr($template, 1));
-        }
-
-        $file = $themePath . ($app ? $app . DIRECTORY_SEPARATOR : '') . ltrim($template, '/') . '.' . ltrim(config('view.view_suffix'), '.');
-
-        if (!is_file($file)) {
-
-            $adminDefaultTheme = 'admin_simpleboot3';
-
-            $cmfAdminThemePath = config('template.cmf_admin_theme_path');
-            $themePath         = "{$cmfAdminThemePath}{$adminDefaultTheme}";
-            $viewBase          = WEB_ROOT . $themePath . '/';
-
-            $defaultFile = $viewBase . ($app ? $app . DIRECTORY_SEPARATOR : '') . ltrim($template, '/') . '.' . ltrim(config('view.view_suffix'), '.');
-
-            if (is_file($defaultFile)) {
-                $file = $defaultFile;
-                $this->updateViewConfig($adminDefaultTheme);
-            }
-        }
-
-        return $file;
+        config('template.view_base', WEB_ROOT . "$themePath/");
+        config('template.tpl_replace_string', $viewReplaceStr);
     }
 
     /**
@@ -181,7 +89,7 @@ class AdminBaseController extends BaseController
             return true;
         }
 
-        $app        = $this->app->http->getName();
+        $app     = $this->request->module();
         $controller = $this->request->controller();
         $action     = $this->request->action();
         $rule       = $app . $controller . $action;

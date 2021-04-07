@@ -1,6 +1,6 @@
 {
     "name": "topthink/think-captcha",
-    "description": "captcha package for thinkphp",
+    "description": "captcha package for thinkphp5",
     "authors": [
         {
             "name": "yunwuxin",
@@ -9,7 +9,7 @@
     ],
     "license": "Apache-2.0",
     "require": {
-        "topthink/framework": "^6.0.0"
+    	"topthink/framework": "5.1.*"
     },
     "autoload": {
         "psr-4": {
@@ -18,15 +18,5 @@
         "files": [
             "src/helper.php"
         ]
-    },
-    "extra": {
-        "think": {
-            "services": [
-                "think\\captcha\\CaptchaService"
-            ],
-            "config":{
-                "captcha": "src/config.php"
-            }            
-        }
     }
 }

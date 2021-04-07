@@ -6,7 +6,6 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'Attribute' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
     'Callback' => $vendorDir . '/electrolinux/phpquery/phpQuery/phpQuery/Callback.php',
     'CallbackBody' => $vendorDir . '/electrolinux/phpquery/phpQuery/phpQuery/Callback.php',
     'CallbackParam' => $vendorDir . '/electrolinux/phpquery/phpQuery/phpQuery/Callback.php',
@@ -17,10 +16,6 @@ return array(
     'DOMDocumentWrapper' => $vendorDir . '/electrolinux/phpquery/phpQuery/phpQuery/DOMDocumentWrapper.php',
     'DOMEvent' => $vendorDir . '/electrolinux/phpquery/phpQuery/phpQuery/DOMEvent.php',
     'ICallbackNamed' => $vendorDir . '/electrolinux/phpquery/phpQuery/phpQuery/Callback.php',
-    'PclZip' => $vendorDir . '/chamilo/pclzip/pclzip.lib.php',
-    'Stringable' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/Stringable.php',
-    'UnhandledMatchError' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/UnhandledMatchError.php',
-    'ValueError' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/ValueError.php',
     'phpQuery' => $vendorDir . '/electrolinux/phpquery/phpQuery/phpQuery.php',
     'phpQueryEvents' => $vendorDir . '/electrolinux/phpquery/phpQuery/phpQuery/phpQueryEvents.php',
     'phpQueryObject' => $vendorDir . '/electrolinux/phpquery/phpQuery/phpQuery/phpQueryObject.php',
@@ -32,13 +27,7 @@ return array(
     'phpQueryPlugin_example' => $vendorDir . '/electrolinux/phpquery/phpQuery/phpQuery/plugins/example.php',
     'phpQueryPlugins' => $vendorDir . '/electrolinux/phpquery/phpQuery/phpQuery.php',
     'think\\App' => $vendorDir . '/thinkcmf/cmf/src/App.php',
-    'think\\Http' => $vendorDir . '/thinkcmf/cmf-route/src/Http.php',
-    'think\\Route' => $vendorDir . '/thinkcmf/cmf-route/src/Route.php',
-    'think\\View' => $vendorDir . '/thinkcmf/think-template/src/View.php',
-    'think\\captcha\\Captcha' => $vendorDir . '/thinkcmf/cmf/src/captcha/Captcha.php',
-    'think\\console\\command\\VendorPublish' => $vendorDir . '/thinkcmf/cmf/src/console/command/VendorPublish.php',
-    'think\\route\\Rule' => $vendorDir . '/thinkcmf/cmf-route/src/route/Rule.php',
-    'think\\route\\Url' => $vendorDir . '/thinkcmf/cmf-route/src/route/Url.php',
-    'think\\route\\dispatch\\Controller' => $vendorDir . '/thinkcmf/cmf-route/src/route/dispatch/Controller.php',
-    'think\\route\\dispatch\\Url' => $vendorDir . '/thinkcmf/cmf-route/src/route/dispatch/Url.php',
+    'think\\Log' => $vendorDir . '/thinkcmf/cmf/src/Log.php',
+    'think\\facade\\Db' => $vendorDir . '/thinkcmf/cmf/src/facade/Db.php',
+    'think\\route\\dispatch\\Module' => $vendorDir . '/thinkcmf/cmf/src/route/dispatch/Module.php',
 );

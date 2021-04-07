@@ -8,7 +8,7 @@
 // +---------------------------------------------------------------------
 // | Author: Dean <zxxjjforever@163.com>
 // +----------------------------------------------------------------------
-use think\facade\Db;
+use think\Db;
 use cmf\model\OptionModel;
 use think\facade\Env;
 use think\facade\Url;
@@ -20,53 +20,41 @@ use think\facade\Hook;
 
 // 应用公共文件
 
-//php8.0
-if (!defined('T_NAME_RELATIVE')) {
-    define('T_NAME_RELATIVE', T_NS_SEPARATOR);
-}
+if (PHP_SAPI == 'cli') {
+    $apps = cmf_scan_dir(APP_PATH . '*', GLOB_ONLYDIR);
 
-/**
- * Url生成
- * @param string      $url    路由地址
- * @param array       $vars   变量
- * @param bool|string $suffix 生成的URL后缀
- * @param bool|string $domain 域名
- * @return UrlBuild
- */
-function url(string $url = '', array $vars = [], $suffix = true, $domain = false)
-{
-    return Route::buildUrl($url, $vars)->suffix($suffix)->domain($domain)->build();
-}
+    foreach ($apps as $app) {
+        $commandFile = APP_PATH . $app . '/command.php';
 
-/**
- * 调用模块的操作方法 参数格式 [模块/控制器/]操作
- * @param string       $url          调用地址
- * @param string|array $vars         调用参数 支持字符串和数组
- * @param string       $layer        要调用的控制层名称
- * @param bool         $appendSuffix 是否添加类名后缀
- * @return mixed
- */
-function action($url, $vars = [], $layer = 'controller', $appendSuffix = false)
-{
-    $app           = app();
-    $rootNamespace = $app->getRootNamespace();
-    $urlArr        = explode('/', $url);
-    $appName       = $urlArr[0];
-    $controller    = cmf_parse_name($urlArr[1], 1, true);
-    $action        = $urlArr[2];
+        if (file_exists($commandFile)) {
+            $commands = include $commandFile;
+            // 注册命令行指令
+            \think\Console::addDefaultCommands($commands);
+        }
+    }
 
-    return $app->invokeMethod(["{$rootNamespace}\\$appName\\$layer\\$controller" . ucfirst($layer), $action], $vars);
+    $plugins = cmf_scan_dir(WEB_ROOT . '/plugins/*', GLOB_ONLYDIR);
+
+    foreach ($plugins as $plugin) {
+        $commandFile = WEB_ROOT . "/plugins/$plugin/command.php";
+
+        if (file_exists($commandFile)) {
+            $commands = include $commandFile;
+            // 注册命令行指令
+            \think\Console::addDefaultCommands($commands);
+        }
+    }
 }
 
 if (!function_exists('db')) {
     /**
      * 实例化数据库类
-     * @param string $name   操作的数据表名称（不含前缀）
-     * @param string $config 数据库配置参数
-     * @param bool   $force  是否强制重新连接
+     * @param string        $name 操作的数据表名称（不含前缀）
+     * @param array|string  $config 数据库配置参数
+     * @param bool          $force 是否强制重新连接
      * @return \think\db\Query
      */
-    function db($name = '', $config = null, $force = false)
+    function db($name = '', $config = [], $force = false)
     {
         return Db::connect($config, $force)->name($name);
     }
@@ -143,14 +131,14 @@ function cmf_get_domain()
  */
 function cmf_get_root()
 {
-    $root = "";
-//    $root = str_replace("//", '/', $root);
-//    $root = str_replace('/index.php', '', $root);
-//    if (defined('APP_NAMESPACE') && APP_NAMESPACE == 'api') {
-//        $root = preg_replace('/\/api(.php)$/', '', $root);
-//    }
-//
-//    $root = rtrim($root, '/');
+    $root = request()->root();
+    $root = str_replace("//", '/', $root);
+    $root = str_replace('/index.php', '', $root);
+    if (defined('APP_NAMESPACE') && APP_NAMESPACE == 'api') {
+        $root = preg_replace('/\/api(.php)$/', '', $root);
+    }
+
+    $root = rtrim($root, '/');
 
     return $root;
 }
@@ -299,7 +287,7 @@ function cmf_password($pw, $authCode = '')
  */
 function cmf_password_old($pw)
 {
-    $decor = md5(config('database.connections.mysql.prefix'));
+    $decor = md5(config('database.prefix'));
     $mi    = md5($pw);
     return substr($decor, 0, 12) . $mi . substr($decor, -4, 4);
 }
@@ -363,11 +351,11 @@ function cmf_clear_cache()
         opcache_reset();
     }
 
-    $runtimePath = runtime_path();
+    $runtimePath = Env::get('runtime_path');
     $dirs        = [];
     $rootDirs    = cmf_scan_dir($runtimePath . "*");
     //$noNeedClear=array(".","..","Data");
-    $noNeedClear = ['.', '..', 'log', 'session'];
+    $noNeedClear = ['.', '..', 'log'];
     $rootDirs    = array_diff($rootDirs, $noNeedClear);
     foreach ($rootDirs as $dir) {
 
@@ -955,7 +943,7 @@ function cmf_asset_relative_url($assetUrl)
 function cmf_check_user_action($object = "", $countLimit = 1, $ipLimit = false, $expire = 0)
 {
     $request = request();
-    $action  = app()->http->getName() . "/" . $request->controller() . "/" . $request->action();
+    $action  = $request->module() . "/" . $request->controller() . "/" . $request->action();
 
     if (is_array($object)) {
         $userId = $object['user_id'];
@@ -1090,8 +1078,7 @@ function cmf_is_ipad()
  */
 function hook($hook, $params = null, $once = false)
 {
-    $hook = cmf_parse_name($hook, 1);
-    return \think\facade\Event::trigger($hook, $params, $once);
+    return Hook::listen($hook, $params, $once);
 }
 
 /**
@@ -1102,8 +1089,7 @@ function hook($hook, $params = null, $once = false)
  */
 function hook_one($hook, $params = null)
 {
-    $hook = cmf_parse_name($hook, 1);
-    return \think\facade\Event::trigger($hook, $params, true);
+    return Hook::listen($hook, $params, true);
 }
 
 /**
@@ -1252,7 +1238,7 @@ function cmf_auth_check($userId, $name = null, $relation = 'or')
     $authObj = new \cmf\lib\Auth();
     if (empty($name)) {
         $request    = request();
-        $app        = app()->http->getName();
+        $app        = $request->module();
         $controller = $request->controller();
         $action     = $request->action();
         $name       = strtolower($app . "/" . $controller . "/" . $action);
@@ -1328,7 +1314,9 @@ function cmf_alpha_id($in, $to_num = false, $pad_up = 4, $passKey = null)
  */
 function cmf_captcha_check($value, $id = "", $reset = true)
 {
-    return \think\captcha\facade\Captcha::check($value);
+    $captcha        = new \think\captcha\Captcha();
+    $captcha->reset = $reset;
+    return $captcha->check($value, $id);
 }
 
 /**
@@ -1365,7 +1353,7 @@ function cmf_split_sql($file, $tablePre, $charset = 'utf8mb4', $defaultTablePre 
  */
 function cmf_current_lang()
 {
-    return app()->lang->getLangSet();
+    return request()->langset();
 }
 
 /**
@@ -2198,7 +2186,7 @@ function cmf_version()
     try {
         $version = trim(file_get_contents(CMF_ROOT . 'version'));
     } catch (\Exception $e) {
-        $version = '6.0.0-unknown';
+        $version = '5.1.0-unknown';
     }
     return $version;
 }

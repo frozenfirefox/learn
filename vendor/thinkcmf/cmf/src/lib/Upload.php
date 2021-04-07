@@ -15,7 +15,7 @@ use think\facade\Env;
 use think\File;
 use app\user\model\AssetModel;
 use think\Response;
-use think\facade\Db;
+use think\Db;
 
 /**
  * ThinkCMF上传类,分块上传
@@ -98,7 +98,7 @@ class Upload
         }
 
         $fileImage    = $this->request->file($this->formName);
-        $originalName = $fileImage->getOriginalName();
+        $originalName = $fileImage->getInfo('name');
 
         $arrAllowedExtensions = explode(',', $arrFileTypes[$fileType]['extensions']);
 
@@ -125,10 +125,10 @@ class Upload
             if (empty($token)) {
                 $token = $this->request->header('XX-Token');
             }
-
+            
             $userId = Db::name('user_token')->where('token', $token)->field('user_id,token')->value('user_id');
         }
-        $targetDir = runtime_path() . "upload" . DIRECTORY_SEPARATOR . $userId . DIRECTORY_SEPARATOR; // 断点续传 need
+        $targetDir = Env::get('runtime_path') . "upload" . DIRECTORY_SEPARATOR . $userId . DIRECTORY_SEPARATOR; // 断点续传 need
         if (!is_dir($targetDir)) {
             mkdir($targetDir, 0777, true);
         }
@@ -170,7 +170,7 @@ class Upload
             return false;
         }
         // Read binary input stream and append it to temp file
-        if (!$in = @fopen($fileImage->getPathname(), "rb")) {
+        if (!$in = @fopen($fileImage->getInfo("tmp_name"), "rb")) {
             $this->error = "Failed to open input stream！";
             return false;
         }
@@ -240,25 +240,23 @@ class Upload
         @fclose($out);
 
         $fileImage = new File($strSaveFilePath, 'r');
-//        $arrInfo   = [
-//            "name"     => $originalName,
-//            "type"     => $fileImage->getMime(),
-//            "tmp_name" => $strSaveFilePath,
-//            "error"    => 0,
-//            "size"     => $fileImage->getSize(),
-//        ];
-//
-//        $fileImage->setSaveName($fileSaveName);
-//        $fileImage->setUploadInfo($arrInfo);
+        $arrInfo   = [
+            "name"     => $originalName,
+            "type"     => $fileImage->getMime(),
+            "tmp_name" => $strSaveFilePath,
+            "error"    => 0,
+            "size"     => $fileImage->getSize(),
+        ];
+
+        $fileImage->setSaveName($fileSaveName);
+        $fileImage->setUploadInfo($arrInfo);
 
         /**
          * 断点续传 end
          */
 
-
-        $fileValidator = validate(['file' => "fileSize:$fileUploadMaxFileSize"]);
-        if (!$fileValidator->check(['file' => $fileImage])) {
-            $error = $fileValidator->getError();
+        if (!$fileImage->validate(['size' => $fileUploadMaxFileSize])->check()) {
+            $error = $fileImage->getError();
             unset($fileImage);
             unlink($strSaveFilePath);
             $this->error = $error;
@@ -268,10 +266,10 @@ class Upload
         //  $url=$first['url'];
         $storageSetting = cmf_get_cmf_settings('storage');
 
-        if (is_array($storageSetting) && is_array($storageSetting['Qiniu']) && array_key_exists("setting", $storageSetting['Qiniu'])) {
-            $qiniuSetting = $storageSetting['Qiniu']['setting'];
-        } else {
-            $qiniuSetting = "";
+        if (is_array($storageSetting) && is_array($storageSetting['Qiniu']) && array_key_exists("setting",$storageSetting['Qiniu'])){
+            $qiniuSetting   = $storageSetting['Qiniu']['setting'];
+        }else{
+            $qiniuSetting   = "";
 
         }
         //$url=preg_replace('/^https/', $qiniu_setting['protocol'], $url);
@@ -294,7 +292,7 @@ class Upload
                 $arrInfo["file_md5"]    = md5_file($strSaveFilePath);
                 $arrInfo["file_sha1"]   = sha1_file($strSaveFilePath);
                 $arrInfo["file_key"]    = $arrInfo["file_md5"] . md5($arrInfo["file_sha1"]);
-                $arrInfo["filename"]    = $originalName;
+                $arrInfo["filename"]    = $fileImage->getInfo("name");
                 $arrInfo["file_path"]   = $strWebPath . $fileSaveName;
                 $arrInfo["suffix"]      = $fileImage->getExtension();
             }
@@ -337,7 +335,7 @@ class Upload
         if ($objAsset) {
             $assetModel->where('id', $objAsset['id'])->update(['filename' => $arrInfo["filename"]]);
         } else {
-            $assetModel->save($arrInfo);
+            $assetModel->allowField(true)->save($arrInfo);
         }
 
         //删除临时文件

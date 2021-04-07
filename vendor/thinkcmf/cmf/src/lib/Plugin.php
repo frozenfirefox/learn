@@ -13,7 +13,7 @@ namespace cmf\lib;
 use think\exception\TemplateNotFoundException;
 use think\facade\Lang;
 use think\Loader;
-use think\facade\Db;
+use think\Db;
 use think\View;
 use think\facade\Config;
 
@@ -55,7 +55,7 @@ abstract class Plugin
     {
         $request = request();
 
-        $engineConfig = config('template');
+        $engineConfig = Config::pull('template');
 
         $this->name = $this->getName();
 
@@ -87,6 +87,8 @@ abstract class Plugin
 
         $this->themeRoot = $this->pluginPath . $themePath . '/';
 
+        $engineConfig['view_base'] = $this->themeRoot;
+
         $pluginRoot = "plugins/{$nameCStyle}";
 
         $cmfAdminThemePath    = config('template.cmf_admin_theme_path');
@@ -116,20 +118,15 @@ abstract class Plugin
                 '__WEB_ROOT__'    => $cdnStaticRoot
             ];
         }
-        $app  = app();
-        $view = new View($app);
+        $view = new View();
 
-        $this->view = $view;
-
-        $this->view->engine()->config([
-            'view_base'          => $this->themeRoot,
-            'tpl_replace_string' => $replaceConfig
-        ]);
+        $this->view = $view->init($engineConfig);
+        $this->view->config('tpl_replace_string', $replaceConfig);
 
         //加载多语言
-        $langSet   = $app->lang->getLangSet();
+        $langSet   = $request->langset();
         $lang_file = $this->pluginPath . "lang/" . $langSet . ".php";
-        $app->lang->load($lang_file);
+        Lang::load($lang_file);
 
     }
 
@@ -143,7 +140,7 @@ abstract class Plugin
     final protected function fetch($template)
     {
         if (!is_file($template)) {
-            $engineConfig = config('view');
+            $engineConfig = Config::pull('template');
             $template     = $this->themeRoot . $template . '.' . $engineConfig['view_suffix'];
         }
 

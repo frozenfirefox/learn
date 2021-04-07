@@ -13,7 +13,6 @@ namespace app\admin\controller;
 use cmf\controller\AdminBaseController;
 use think\facade\Db;
 use app\admin\model\AdminMenuModel;
-use app\admin\service\AdminMenuService;
 
 class IndexController extends AdminBaseController
 {
@@ -21,7 +20,7 @@ class IndexController extends AdminBaseController
     public function initialize()
     {
         $adminSettings = cmf_get_option('admin_settings');
-        if (empty($adminSettings['admin_password']) || $this->request->pathinfo() == $adminSettings['admin_password'] || true) {
+        if (empty($adminSettings['admin_password']) || $this->request->path() == $adminSettings['admin_password']) {
             $adminId = cmf_get_current_admin_id();
             if (empty($adminId)) {
                 session("__LOGIN_BY_CMF_ADMIN_PW__", 1);//设置后台登录加密码
@@ -34,7 +33,7 @@ class IndexController extends AdminBaseController
     /**
      * 后台首页
      */
-    public function index(AdminMenuService $service)
+    public function index()
     {
         $content = hook_one('admin_index_index_view');
 
@@ -53,16 +52,16 @@ class IndexController extends AdminBaseController
         $this->assign("menus", $menus);
 
 
-        $result   = $service->getAll();
+        $result = AdminMenuModel::order(["app" => "ASC", "controller" => "ASC", "action" => "ASC"])->select();
         $menusTmp = array();
-        foreach ($result as $item) {
+        foreach ($result as $item){
             //去掉/ _ 全部小写。作为索引。
-            $indexTmp            = $item['app'] . $item['controller'] . $item['action'];
-            $indexTmp            = preg_replace("/[\\/|_]/", "", $indexTmp);
-            $indexTmp            = strtolower($indexTmp);
+            $indexTmp = $item['app'].$item['controller'].$item['action'];
+            $indexTmp = preg_replace("/[\\/|_]/","",$indexTmp);
+            $indexTmp = strtolower($indexTmp);
             $menusTmp[$indexTmp] = $item;
         }
-        $this->assign("menus_js_var", json_encode($menusTmp));
+        $this->assign("menus_js_var",json_encode($menusTmp));
 
         //$admin = Db::name("user")->where('id', cmf_get_current_admin_id())->find();
         //$this->assign('admin', $admin);
