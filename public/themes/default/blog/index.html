@@ -1,6 +1,24 @@
 <extend name="block/block" />
 <block name="main">
-    <div style="color: #ff0000;">
-        我是首页的显示
-    </div>
+    <section>
+        <div class="main">
+            <div class="main-box">
+                <include file="block/left" />
+                <div class="main-box-middle">
+                    <div class="main-box-middle-content">
+                        <div class="main-box-middle-content-wrap">
+                            我是模块1
+                        </div>
+                        <div class="main-box-middle-content-wrap">
+                            我是模块2
+                        </div>
+                        <div class="main-box-middle-content-wrap">
+                            我是模块3
+                        </div>
+                    </div>
+                </div>
+                <include file="block/right" />
+            </div>
+        </div>
+    </section>
 </block>

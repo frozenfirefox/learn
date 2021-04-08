@@ -1,7 +1,8 @@
-body{
+*, ul, li, body{
     margin: 0;
     padding: 0;
 }
+/*this is the header css*/
 .nav-header{
     line-height: 60px;
     min-width: 1200px;
@@ -11,7 +12,6 @@ body{
     margin: 0;
     padding: 0;
     background: hsla(0,0%,100%,.9);
-    background-color: #282836;
     position: -webkit-sticky;
     position: sticky;
     box-shadow: 0 2px 9px 0 rgb(0 0 0 / 8%);
@@ -20,7 +20,7 @@ body{
     position: relative;
     width: 1200px;
     margin: 0 auto;
-    border: 1px solid #0a4b3e;
+    /*border: 1px solid #0a4b3e;*/
 }
 .nav-header>.nav-header-center>.nav-header-center-logo{
     display: inline-block;
@@ -89,4 +89,69 @@ body{
 }
 .nav-header>.nav-header-center>.nav-header-center-btn>.login-register-wrap_btn{
     float: left;
+}
+
+/*this is the main css*/
+.main{
+    margin: 0 auto;
+}
+.main>.main-box{
+    width: 1200px;
+    margin: 34px auto 0;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 13px;
+}
+.main>.main-box>.main-box-left{
+    /*background: #0b6cbc;*/
+}
+.main>.main-box>.main-box-left>.list-box{
+    width: 110px;
+    font-size: 16px;
+    text-decoration: none;
+    list-style: none;
+}
+.main>.main-box>.main-box-left>.list-box>li{
+    margin-top: 10px;
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    font-size: 16px;
+    font-family: PingFangSC-Regular,PingFang SC,Helvetica,STHeiti,Microsoft YaHei,"sans-serif";
+    background: #fff;
+}
+.main>.main-box>.main-box-left>.list-box>li>a{
+    text-decoration: none;
+}
+.main>.main-box>.main-box-left>.list-box>li>.active{
+    display: block;
+    color: #fff;
+    width: 110px;
+    height: 40px;
+    background: linear-gradient(316deg,#0cb65b,#1cdc94);
+    border-radius: 6px;
+}
+.main>.main-box>.main-box-middle{
+    background: #0cb65b;
+}
+.main>.main-box>.main-box-middle>.main-box-middle-content{
+    min-height: 70vh;
+    width: 740px;
+}
+.main>.main-box>.main-box-middle>.main-box-middle-content>.main-box-middle-content-wrap{
+    height: 70px;
+}
+.main>.main-box>.main-box-right{
+    background: #0F3A56;
+}
+.main>.main-box>.main-box-right>.main-box-right-user-info{
+    width: 247px;
+    margin: 34px auto;
+    background: #0F3A56;
+}
+.main>.main-box>.main-box-right>.main-box-right-btn-more{
+    width: 247px;
+    margin: 34px auto;
+    background: #0F3A56;
 }
