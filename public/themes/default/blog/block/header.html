@@ -7,16 +7,33 @@
         </div>
         <div class="nav-header-center-bar">
             <div class="bar-list">
-                <a href="" class="active">广场</a>
+                <if condition="$nav eq ''">
+                    <a href="{:url('blog/index/index')}" class="active">广场</a>
+                    <else />
+                    <a href="{:url('blog/index/index')}" >广场</a>
+                </if>
             </div>
             <div class="bar-list">
-                <a href="">体验课</a>
+                <if condition="$nav eq 'trial'">
+                    <a href="{:url('blog/index/trial')}" class="active">体验课</a>
+                    <else />
+                    <a href="{:url('blog/index/trial')}">体验课</a>
+                </if>
             </div>
             <div class="bar-list">
-                <a href="">正式课</a>
+                <if condition="$nav eq 'explore'">
+                    <a href="{:url('blog/index/explore')}" class="active">正式课</a>
+                    <else />
+                    <a href="{:url('blog/index/explore')}">正式课</a>
+                </if>
+
             </div>
             <div class="bar-list">
-                <a href="">活动</a>
+                <if condition="$nav eq 'activities'">
+                    <a href="{:url('blog/index/activities')}" class="active">活动</a>
+                    <else />
+                    <a href="{:url('blog/index/activities')}">活动</a>
+                </if>
             </div>
         </div>
         <div class="nav-header-center-btn">

@@ -17,8 +17,36 @@ class IndexController extends HomeBaseController
 {
     public function index()
     {
-        $this->assign("hello", "Hello ThinkCMF!");
+        $this->assign("nav", "");
+        $this->assign("title", "广场-九九教育");
         return $this->fetch(':index');
+    }
+
+    /**
+     * 体验课
+     */
+    public function trial(){
+        $this->assign("nav", "trial");
+        $this->assign("title", "体验课-九九教育");
+        return $this->fetch(':trial');
+    }
+
+    /**
+     * 正式课
+     */
+    public function explore(){
+        $this->assign("nav", "explore");
+        $this->assign("title", "正式课-九九教育");
+        return $this->fetch(':explore');
+    }
+
+    /**
+     * activities
+     */
+    public function activities(){
+        $this->assign("nav", "activities");
+        $this->assign("title", "活动-九九教育");
+        return $this->fetch(':activities');
     }
 
     public function block()
