@@ -625,3 +625,154 @@ footer{
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
 }
+
+/*this is the page*/
+.page-center{
+    text-align: center;
+}
+
+/*this is the tabs*/
+.main>.the-tabs-box{
+    width: 1200px;
+    margin: 0 auto;
+    margin-bottom: 24px;
+    background: #f5f8f8;
+    border-radius: 10px;
+    padding: 0 16px;
+    -webkit-user-select: none;
+    display: flex;
+}
+.the-tabs-box>.the-colleges-box>div span {
+    margin: 12px 6px;
+    text-align: center;
+    min-width: 56px;
+    padding: 0 12px;
+    height: 24px;
+    font-size: 16px;
+    font-family: PingFangSC-Regular,PingFang SC,Helvetica,STHeiti,Microsoft YaHei,"sans-serif";
+    font-weight: 600;
+    color: #747c80;
+    line-height: 24px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    display: inline-block;
+}
+.the-tabs-box .actived {
+    color: #0cb65b!important;
+    background: #fff;
+    border-radius: 8px;
+}
+.main>.course-list-header {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    margin: 0 auto;
+    padding: 40px 0 20px;
+    width: 1200px;
+    /*height: 44px;*/
+}
+.course-list-header>h2 {
+    height: 45px;
+    font-size: 32px;
+    font-family: PingFangSC-Semibold,PingFang SC;
+    font-weight: 600;
+    color: #18252c;
+    line-height: 45px;
+    display: block;
+    margin: 0;
+    padding: 0;
+}
+.course-list-header .swiper-container {
+    margin: 0;
+    overflow: hidden;
+    position: relative;
+    list-style: none;
+    padding: 0;
+    z-index: 1;
+    border-radius: 21px;
+    border: 1px solid #e7e9e9;
+    cursor: pointer;
+    height: 44px;
+}
+.course-list-header .notice-wrap:first-child div, .course-list-header .notice-wrap {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    width: 265px;
+    height: 42px;
+    padding: 0 20px;
+}
+
+/*this is the activities*/
+.main>.main-box-activities{
+    width: 1200px;
+    margin: 32px auto 0;
+    padding-bottom: 24px;
+}
+.main>.main-box-activities>.main-box-content{
+    margin-bottom: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+}
+.main>.main-box-activities>.main-box-content>.activities-card-item{
+    width: 590px;
+    height: 344px;
+    background: #fff;
+    box-shadow: 0 2px 8px 0 rgb(0 0 0 / 4%);
+    border-radius: 10px;
+    margin: 0 20px 40px 0;
+    cursor: pointer;
+}
+.activities-card-item .activities-card-img, .activities-card-item .activities-card-img>img {
+    width: 590px;
+    height: 264px;
+    border-radius: 10px 10px 0 0;
+}
+.activities-card-item .card-bottom {
+    padding: 16px;
+    position: relative;
+}
+.activities-card-item:nth-child(2n) {
+    margin-right: 0 !important;
+}
+.activities-card-item .card-bottom .card-status {
+    background: url(../images/tag-no.png) no-repeat 50%;
+    width: 102px;
+    height: 40px;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    line-height: 40px;
+    text-align: center;
+    font-size: 16px;
+    font-family: PingFangSC-Regular,PingFang SC,Helvetica,STHeiti,Microsoft YaHei,"sans-serif";
+    font-weight: 400;
+    color: #18252c;
+}
+.activities-card-item .card-bottom .card-status-living {
+    background: url(../images/tag-bg.png) no-repeat 50%;
+    width: 102px;
+    height: 40px;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    line-height: 40px;
+    text-align: center;
+    font-size: 16px;
+    font-family: PingFangSC-Regular,PingFang SC,Helvetica,STHeiti,Microsoft YaHei,"sans-serif";
+    font-weight: 400;
+    color: #18252c;
+}
