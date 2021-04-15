@@ -776,3 +776,21 @@ footer{
     font-weight: 400;
     color: #18252c;
 }
+.activities-card-item .card-bottom .card-number, .activities-card-item .card-bottom .card-time {
+    font-size: 14px;
+    font-family: PingFangSC-Regular,PingFang SC,Helvetica,STHeiti,Microsoft YaHei,"sans-serif";
+    font-weight: 400;
+    color: #a3a8ab;
+}
+.activities-card-item .card-bottom .card-msg {
+    max-width: 460px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    height: 24px;
+    font-size: 18px;
+    font-family: PingFangSC-Semibold,PingFang SC,Helvetica,STHeiti,Microsoft YaHei,"sans-serif";
+    font-weight: 600;
+    color: #18252c;
+    line-height: 24px;
+}
