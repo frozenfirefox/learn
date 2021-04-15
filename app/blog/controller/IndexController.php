@@ -49,6 +49,13 @@ class IndexController extends HomeBaseController
         return $this->fetch(':activities');
     }
 
+    /**
+     * detail
+     */
+    public function detail(){
+        return $this->fetch(':detail');
+    }
+
     public function block()
     {
         return $this->fetch();
