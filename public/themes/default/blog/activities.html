@@ -80,3 +80,13 @@
         </div>
     </section>
 </block>
+
+<block name="script">
+    <include file="block/script" />
+    <script>
+        let url = "{:url('blog/index/actdetail')}";
+        $('.activities-card-item').click(function () {
+            location.href = url;
+        });
+    </script>
+</block>

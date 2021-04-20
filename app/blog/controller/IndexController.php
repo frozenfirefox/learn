@@ -56,6 +56,22 @@ class IndexController extends HomeBaseController
         return $this->fetch(':detail');
     }
 
+    /**
+     * courseDetail
+     */
+    public function courseDetail(){
+        $this->assign("nav", "");
+        $this->assign("title", "详情-九九教育");
+        return $this->fetch(':course_detail');
+    }
+
+    /**
+     * actDetail
+     */
+    public function actDetail(){
+        return $this->fetch(':act_detail');
+    }
+
     public function block()
     {
         return $this->fetch();
