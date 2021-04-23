@@ -981,6 +981,9 @@ footer{
 }
 
 /*this is the course detail page*/
+.course-details_container {
+    background-color: #f7f7f7;
+}
 .course-left_area {
     width: 850px;
     background-color: #fff;
@@ -1022,4 +1025,544 @@ div.label div.label-tit {
     padding: 0 16px;
     overflow: hidden;
     float: left;
+}
+
+/*this is the course body */
+div.course-body {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    background-color: #fff;
+    padding: 24px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+div.course-body>div.left {
+    width: 530px;
+    height: 353px;
+    margin-right: 20px;
+}
+div.course-body>div img.course-banner {
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    -o-object-fit: cover;
+    object-fit: cover;
+}
+div.course-body>div.right {
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    background-color: #fff;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    position: relative;
+}
+div.course-body>div.right>div.course-info_wrap {
+    height: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+}
+div.course-body>div.right>div.course-info_wrap .wrap__top h3 {
+    height: 45px;
+    font-size: 32px;
+    font-family: PingFangSC-Semibold,PingFang SC;
+    font-weight: 600;
+    color: #18252c;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 600px;
+}
+div.course-body>div.right>div.course-info_wrap .wrap__top .course-data {
+    font-size: 14px;
+    font-family: PingFangSC-Regular,PingFang SC;
+    font-weight: 400;
+    color: #747c80;
+    line-height: 6px;
+    padding: 14px 0 24px 0;
+}
+div.course-body>div.right>div.course-info_wrap .wrap__top .course-desc {
+    font-size: 14px;
+    font-family: PingFangSC-Regular,PingFang SC;
+    font-weight: 400;
+    color: #747c80;
+    line-height: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 6;
+}
+div.course-body>div.right>div.course-info_wrap .wrap__top .course-data .dot {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: #d1d3d5;
+    vertical-align: top;
+    margin: 0 8px;
+}
+div.course-body>div.right>div.course-info_wrap .wrap__bottom {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    font-size: 40px;
+    font-family: PingFangSC-Semibold,PingFang SC;
+    font-weight: 600;
+    color: #ff2b26;
+}
+div.course-body>div.right>div.course-info_wrap .wrap__bottom .course-handle {
+    width: 295px;
+    height: 56px;
+    font-size: 19px;
+    line-height: 56px;
+    text-align: center;
+    background: -webkit-gradient(linear,right top,left top,from(#ff4d40),to(#ff7e75));
+    background: linear-gradient(
+            270deg
+            ,#ff4d40,#ff7e75);
+    border-radius: 8px;
+    cursor: pointer;
+}
+div.course-body>div.right>div.course-info_wrap .wrap__bottom .course-handle span {
+    font-size: 19px;
+    font-family: PingFangSC-Semibold,PingFang SC;
+    font-weight: 600;
+    color: #fff;
+    line-height: 26px;
+}
+
+div.course-right_area>div>ul.course-list>li .img-box {
+    width: 140px;
+    height: 93px;
+    margin-right: 10px;
+    overflow: hidden;
+}
+div.course-right_area>div>ul.course-list>li .img-box img {
+    width: 100%;
+    height: 100%;
+    border-radius: 7px;
+    -o-object-fit: cover;
+    object-fit: cover;
+}
+div.course-right_area>div>ul.course-list>li .list_right {
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    text-align: left;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+}
+div.course-right_area>div>ul.course-list>li .list_right .right__top .title {
+    width: 144px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    margin-bottom: 10px;
+    color: #18252c;
+    font-size: 16px;
+    font-family: PingFangSC-Regular,PingFang SC;
+    font-weight: 400;
+}
+div.course-right_area>div>ul.course-list>li {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+div.course-right_area>div>ul.course-list>li .list_right .right__top .price {
+    font-size: 14px;
+    font-family: PingFangSC-Regular,PingFang SC;
+    font-weight: 400;
+    color: #ff2b26;
+    line-height: 20px;
+}
+div.course-right_area>div>ul.course-list>li .list_right .study_num {
+    font-size: 14px;
+    font-family: PingFangSC-Regular,PingFang SC;
+    font-weight: 400;
+    color: #a3a8ab;
+}
+
+/*this is the mine*/
+.margin-top-0{
+    margin-top: 0 !important;
+    padding: 0 !important;
+}
+.main>.main-box>.personal-main-top {
+    width: 1200px;
+    height: 278px;
+    background: url(../images/top-bg.png) 50% no-repeat;
+    background-size: 1200px 278px;
+    border-radius: 5px;
+    overflow: hidden;
+    margin: 33px 0 20px;
+    display: block;
+}
+.personal-main-top>div {
+    margin: 85px auto 0;
+    text-align: center;
+}
+.personal-main-top>div img {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    box-shadow: 0 0 10px 0 rgb(0 0 0 / 10%);
+    border: 5px solid #fff;
+}
+.personal-main-top .editor-material-wrap {
+    cursor: pointer;
+    margin: -26px 0 10px;
+}
+.personal-main-top .editor-material-wrap .editor-material {
+    display: inline-block;
+    width: 88px;
+    height: 25px;
+    background: #ffe500;
+    border-radius: 15px;
+    font-size: 12px;
+    font-family: PingFangSC-Medium,PingFang SC,Helvetica,STHeiti,Microsoft YaHei,"sans-serif";
+    font-weight: 500;
+    color: #18252c;
+    line-height: 25px;
+}
+.personal-main-top .editor-material-wrap .editor-material .editor-material-img {
+    width: 12px;
+    height: 12px;
+    vertical-align: middle;
+    border: none;
+}
+.personal-main-top>div .login-name, #personal-center .personal-main-top>div .student-satusId {
+    font-size: 20px;
+    font-family: PingFangSC-Medium,PingFang SC,Helvetica,STHeiti,Microsoft YaHei,"sans-serif";
+    font-weight: 500;
+    color: #fff;
+    line-height: 28px;
+    text-shadow: 0 2px 4px rgb(0 0 0 / 50%);
+    margin-top: 12px;
+}
+.mine-box-left{
+    width: 133px;
+    text-align: center;
+
+}
+.mine-box-left>.bg-mine-left>.list-box{
+    width: 110px;
+    font-size: 16px;
+    text-decoration: none;
+    list-style: none;
+    margin: 0 auto;
+}
+.mine-box-left>.bg-mine-left>.list-box>li{
+    /*margin-top: 10px;*/
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    font-size: 16px;
+    font-family: PingFangSC-Regular,PingFang SC,Helvetica,STHeiti,Microsoft YaHei,"sans-serif";
+    background: initial;
+}
+.mine-box-left>.bg-mine-left>.list-box>li>a{
+    text-decoration: none;
+}
+.mine-box-left>.bg-mine-left>.list-box>li>.active{
+    display: block;
+    color: #fff;
+    width: 110px;
+    height: 50px;
+    background: linear-gradient(316deg,#0cb65b,#1cdc94);
+    border-radius: 6px;
+}
+.bg-mine-left{
+    background: #f5f8f8;
+    border-radius: 6px;
+}
+
+/*this is the mine right*/
+.userinfo-box>.userinfo-show>.content-box {
+    background: #f5f8f8;
+    border-radius: 8px;
+    width: 100%;
+    height: 82px;
+    padding: 20px 2px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.userinfo-box .userinfo-show>.content-box>div {
+    width: 60px;
+    text-align: center;
+    font-size: 14px;
+    font-family: PingFangSC-Regular,PingFang SC,Helvetica,STHeiti,Microsoft YaHei,"sans-serif";
+    font-weight: 400;
+    color: #465156;
+    line-height: 20px;
+}
+.userinfo-box .userinfo-show>.content-box>.line {
+    width: 1px;
+    height: 20px;
+    background-color: #e5e5e5;
+}
+.main-box-right-user-info.height-auto{
+    height: initial !important;
+    padding-top: 0 !important;
+}
+
+/*this is the publish dialog*/
+.publish-content {
+    position: relative;
+    padding: 24px 0 20px 24px;
+}
+.publish-content .dialog-title {
+    font-size: 20px;
+    font-family: PingFangSC-Medium,PingFang SC,Helvetica,STHeiti,Microsoft YaHei,"sans-serif";
+    font-weight: 500;
+    color: #383640;
+    margin-bottom: 24px;
+}
+.publish-content .close-btn-x {
+    position: absolute;
+    top: 28px;
+    right: 24px;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+.publish-content .close-btn-x img {
+    width: 100%;
+    height: 100%;
+}
+.publish-content .dialog-input-text .input-text-msg {
+    color: #383640;
+    margin-bottom: 12px;
+    font-size: 16px;
+    font-family: PingFangSC-Medium,PingFang SC,Helvetica,STHeiti,Microsoft YaHei,"sans-serif";
+    font-weight: 500;
+}
+.publish-content .dialog-input-text .text-box {
+    position: relative;
+    width: 732px;
+    height: 101px;
+}
+.publish-content .dialog-input-text .text-box .text-unfocus {
+    width: 100%;
+    height: 101px;
+    background: #f7f7f7;
+    border-radius: 10px;
+    border: 1px solid #dcdcdc;
+    padding: 14px 16px 16px;
+    font-size: 14px;
+    font-family: PingFangSC-Medium,PingFang SC,Helvetica,STHeiti,Microsoft YaHei,"sans-serif";
+    font-weight: 500;
+    color: #18252c;
+    line-height: 20px;
+    outline: 0;
+}
+.text-height {
+    height: 148px!important;
+}
+.publish-content .emoji-icon-btn {
+    margin-top: 20px;
+    position: relative;
+    bottom: 0;
+}
+.publish-content .upload-pictures>p {
+    margin: 10px 0 27px;
+    font-size: 16px;
+    font-family: PingFangSC-Medium,PingFang SC,Helvetica,STHeiti,Microsoft YaHei,"sans-serif";
+    font-weight: 500;
+    color: #383640;
+}
+.publish-img-box {
+    width: 732px;
+    position: relative;
+}
+.publish-content .college-title {
+    margin-top: 10px;
+}
+.publish-content .colleges {
+    margin-top: 16px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 12px;
+    font-family: PingFangSC-Regular,PingFang SC,Helvetica,STHeiti,Microsoft YaHei,"sans-serif";
+    font-weight: 400;
+    color: #36404a;
+    line-height: 17px;
+}
+.publish-content .colleges .college-label {
+    cursor: pointer;
+    margin-right: 16px;
+    width: 56px;
+    height: 27px;
+    background: #fff;
+    box-shadow: 0 1px 10px 0 rgb(0 0 0 / 6%);
+    border-radius: 14px;
+    text-align: center;
+    line-height: 27px;
+    margin-bottom: 14px;
+}
+.title {
+    display: flex;
+    align-items: center;
+    font-family: PingFangSC-Semibold,PingFang SC,Helvetica,STHeiti,Microsoft YaHei,"sans-serif";
+    font-size: 14px;
+    font-weight: 600;
+    color: #36404a;
+    line-height: 20px;
+}
+.label-box {
+    margin-top: 8px;
+    margin-left: -12px;
+    margin-bottom: 29px;
+    overflow: hidden;
+}
+.active-label-item, .label-box .label-item {
+    float: left;
+    padding: 6px 16px;
+    margin-left: 12px;
+    border-radius: 14px;
+    font-size: 12px;
+    font-family: PingFangSC-Regular,PingFang SC,Helvetica,STHeiti,Microsoft YaHei,"sans-serif";
+    font-weight: 400;
+    line-height: 16px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    background: #f7f7f7;
+    color: #465156;
+}
+
+.publish-label-box {
+    margin-top: 6px;
+}
+
+.publish-content .bot-btn {
+    margin-top: 2px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+.publish-content .bot-btn .submit-btn-disable {
+    background: linear-gradient(
+            159deg
+            ,#1cdc94,#0cb65b);
+    opacity: .5;
+}
+
+.publish-content .bot-btn .submit-btn {
+    position: relative;
+    background: linear-gradient(
+            159deg
+            ,#1cdc94,#0cb65b);
+    box-shadow: 0 2px 8px 0 rgb(12 182 91 / 40%);
+    color: #fff;
+}
+.publish-content .bot-btn>span {
+    width: 160px;
+    height: 46px;
+    line-height: 46px;
+    display: inline-block;
+    border-radius: 27px;
+    font-size: 16px;
+    font-family: PingFangSC-Medium,PingFang SC,Helvetica,STHeiti,Microsoft YaHei,"sans-serif";
+    font-weight: 500;
+    cursor: pointer;
+}
+.publish-content .bot-btn .close-btn {
+    border: 1px solid #d1d3d5;
+    box-sizing: border-box;
+    color: #d1d3d5;
+    margin-left: 100px;
+}
+
+.publish-content .bot-btn>span {
+    width: 160px;
+    height: 46px;
+    line-height: 46px;
+    display: inline-block;
+    border-radius: 27px;
+    font-size: 16px;
+    font-family: PingFangSC-Medium,PingFang SC,Helvetica,STHeiti,Microsoft YaHei,"sans-serif";
+    font-weight: 500;
+    cursor: pointer;
+}
+.publish-content .college-title img {
+    width: 24px;
+    height: 24px;
+    vertical-align: middle;
+    margin-right: 4px;
+}
+.title img {
+    margin-right: 8px;
+    width: 24px;
+    height: 24px;
+}
+#imgInput {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 170px;
+    height: 110px;
+    opacity: 0;
+    cursor: pointer;
+}
+.add-btn, .item {
+    margin-left: 16px;
+    margin-bottom: 14px;
+    position: relative;
+    width: 170px;
+    height: 110px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.add-btn {
+    background: #f5f8f8;
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEQAAABGCAYAAAB12zK5AAAC2UlEQVR4Xu2cv2sUQRzF5+2dRgUbwcLiMBaR5GbONCLaacC/QEysRI1oTGtpIWhp7Q+iRAvBSPInqGihFtqEmyELB6JNLMRKISSb7JMNUZIzbpiLd7Mh3+sOZvb7vp99b2ePGQ5KPmsIoAg8Zmdn9ywtLbFSqcyF1hMUiHNuIE3TO0qp/hUQ00qp67Va7XUoMMGA1Ov1IQDPSK7RAIAAhrTWkyGgBAESx/HexcXFzyT3rdc0gO9KqW5jzM9OQwkCxFp7iuSrvGbL5fLJvr6+N9sCiHNuJE3T+3nNArhqjBnbFkCstaMk7+Y1G0XRNa31AwGyQkCANFlBgAgQeYb88YA8VJviIEAESP7bgzhEHCIO8XrDlshIZCQyEhkvAhIZiYyXYWSVkchIZCQyXgQkMhIZL8NsiVVmZmbmcJqm50j2k9zl1aHnYAAHSeoNNqocyS+el/YaDiA7bTAdRdFEtVptZJOXtzKdc5eyjaN2g/BS29nBcwBGjTFPEMfxkSRJPiqldnRWQ7GqAVgolUpHUa/Xsz3WkWLJC6MGwL0MyDul1IkwEopVFcBbWGunSJ4plrRgaiYzIJdJPgwmoUCFoygaRnakyTn3guRAgbR1XAqAl1rr08vLrrV2J4CbJC+SPNBxNQELAvgKYJzkLWPMwl9HqhqNxv75+fndbdZ4nuTtDWrcAPC0nTq6urrmenp6vq2uEeqMmZwgWn0XtsRvmXZas/naAqSJiAARIPkBFIeIQ8QhXouUREYiI5GRyHgRkMhIZLwMI6uMREYiI5HxIiCRkch4GUZWGYmMREYi40WgabBzbjBN0+d514ii6KzWemozdVqZG2SjKo7jQ0mSfMoTXCqVuqvValuPVK1XPwiQTIi19jHJC/+AMl6r1YZbucObnRMMSPYfIkmSPFJKDa5uAsBEuVy+0tvb+2OzzbUyPxiQ32Kdc8eUUsez7yTfG2M+tNLI/5rzCxKRSWrxysTGAAAAAElFTkSuQmCC);
+    background-size: 34px 35px;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    cursor: pointer;
+}
+.publish-content .emoji-icon-btn .emoji-btn img {
+    width: 19px;
+    height: 19px;
+    vertical-align: middle;
+    display: inline-block;
+    margin-bottom: 2px;
 }

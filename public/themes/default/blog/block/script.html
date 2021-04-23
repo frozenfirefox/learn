@@ -12,7 +12,11 @@
             return - ($(this).height() / 2);
         }
     });
-
+    $('.modal-dialog-publish').modal().css({
+        'margin-top': function () {s
+            return - ($(this).height() / 2);
+        }
+    });
 </script>
 
 <div class="modal fade bs-example-modal-sm" id="myModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
@@ -70,6 +74,9 @@
         </div>
     </div>
 </div>
+
+<include file="block/publish" />
+
 <script>
     $('#myModal').on('show.bs.modal', function (e) {
         $('#drag').html('');
