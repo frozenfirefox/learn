@@ -240,6 +240,12 @@ a,a:hover{
     width: 60px;
     height: 60px;
 }
+/*this is the img hover*/
+.btn-box-item img:hover {
+    border: 1px solid rgba(12,182,91,.5);
+    border-radius: 50%;
+}
+
 /*this is footer*/
 footer{
     position: absolute;
@@ -1541,7 +1547,7 @@ div.course-right_area>div>ul.course-list>li .list_right .study_num {
     opacity: 0;
     cursor: pointer;
 }
-.add-btn, .item {
+.add-btn {
     margin-left: 16px;
     margin-bottom: 14px;
     position: relative;
@@ -1550,7 +1556,6 @@ div.course-right_area>div>ul.course-list>li .list_right .study_num {
     border-radius: 8px;
     overflow: hidden;
 }
-
 .add-btn {
     background: #f5f8f8;
     background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEQAAABGCAYAAAB12zK5AAAC2UlEQVR4Xu2cv2sUQRzF5+2dRgUbwcLiMBaR5GbONCLaacC/QEysRI1oTGtpIWhp7Q+iRAvBSPInqGihFtqEmyELB6JNLMRKISSb7JMNUZIzbpiLd7Mh3+sOZvb7vp99b2ePGQ5KPmsIoAg8Zmdn9ywtLbFSqcyF1hMUiHNuIE3TO0qp/hUQ00qp67Va7XUoMMGA1Ov1IQDPSK7RAIAAhrTWkyGgBAESx/HexcXFzyT3rdc0gO9KqW5jzM9OQwkCxFp7iuSrvGbL5fLJvr6+N9sCiHNuJE3T+3nNArhqjBnbFkCstaMk7+Y1G0XRNa31AwGyQkCANFlBgAgQeYb88YA8VJviIEAESP7bgzhEHCIO8XrDlshIZCQyEhkvAhIZiYyXYWSVkchIZCQyXgQkMhIZL8NsiVVmZmbmcJqm50j2k9zl1aHnYAAHSeoNNqocyS+el/YaDiA7bTAdRdFEtVptZJOXtzKdc5eyjaN2g/BS29nBcwBGjTFPEMfxkSRJPiqldnRWQ7GqAVgolUpHUa/Xsz3WkWLJC6MGwL0MyDul1IkwEopVFcBbWGunSJ4plrRgaiYzIJdJPgwmoUCFoygaRnakyTn3guRAgbR1XAqAl1rr08vLrrV2J4CbJC+SPNBxNQELAvgKYJzkLWPMwl9HqhqNxv75+fndbdZ4nuTtDWrcAPC0nTq6urrmenp6vq2uEeqMmZwgWn0XtsRvmXZas/naAqSJiAARIPkBFIeIQ8QhXouUREYiI5GRyHgRkMhIZLwMI6uMREYiI5HxIiCRkch4GUZWGYmMREYi40WgabBzbjBN0+d514ii6KzWemozdVqZG2SjKo7jQ0mSfMoTXCqVuqvValuPVK1XPwiQTIi19jHJC/+AMl6r1YZbucObnRMMSPYfIkmSPFJKDa5uAsBEuVy+0tvb+2OzzbUyPxiQ32Kdc8eUUsez7yTfG2M+tNLI/5rzCxKRSWrxysTGAAAAAElFTkSuQmCC);
@@ -1566,3 +1571,10 @@ div.course-right_area>div>ul.course-list>li .list_right .study_num {
     display: inline-block;
     margin-bottom: 2px;
 }
+.publish-content .upload-pictures>p>span {
+    font-size: 12px;
+    font-family: PingFangSC-Regular,PingFang SC,Helvetica,STHeiti,Microsoft YaHei,"sans-serif";
+    font-weight: 400;
+    color: #fa6400;
+}
+
