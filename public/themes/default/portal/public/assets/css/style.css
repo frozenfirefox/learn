@@ -61,10 +61,14 @@ a,a:hover{
 }
 .nav-header>.nav-header-center>.nav-header-center-btn>.search-wrap_input{
     width: 255px;
+    height: 60px;
+    color: #fff;
+    position: relative;
     float: left;
-    vertical-align: middle;
+    font-size: 12px;
+    margin-right: 70px;
 }
-.nav-header>.nav-header-center>.nav-header-center-btn>.search-wrap_input>.search-input-ele{
+.nav-header>.nav-header-center>.nav-header-center-btn>.search-wrap_input .search-input-ele{
     white-space: nowrap;
     overflow: hidden;
     position: absolute;
@@ -83,6 +87,29 @@ a,a:hover{
     height: 32px;
     border: 0;
     border-right: none;
+}
+.nav-header>.nav-header-center>.nav-header-center-btn>.search-wrap_input>.search-btn{
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    cursor: pointer;
+    border: none;
+    height: 24px;
+    width: 24px;
+    line-height: 21px;
+    text-align: center;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.nav-header>.nav-header-center>.nav-header-center-btn>.search-wrap_input>.search-btn>.search-img{
+    display: inline-block;
+    width: 15px;
+    margin-top: 2px;
+    background-repeat: no-repeat;
+    background: url(../images/search.png) center;
+    background-size: 16px 16px;
 }
 .nav-header>.nav-header-center>.nav-header-center-btn>.nav-icon{
     float: left;
@@ -636,7 +663,28 @@ footer{
 .page-center{
     text-align: center;
 }
-
+.pagination>li>a, .pagination>li>span {
+    min-width: 30px;
+    padding: 10px 15px;
+    text-align: center;
+    vertical-align: middle;
+    display: inline-block;
+    line-height: 20px;
+    margin: 0 10px;
+    border-radius: 6px;
+    background-color: #f4f4f5;
+    border: initial;
+    outline: 0;
+    color: initial;
+}
+.pagination>li>a.active {
+    background-color: #00b93b;
+    color: #fff;
+}
+.pagination>li>a.disable{
+    background-color: #f4f4f5;
+    color: #c0c4cc;
+}
 /*this is the tabs*/
 .main>.the-tabs-box{
     width: 1200px;

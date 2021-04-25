@@ -9,7 +9,7 @@
                     <div class="course-item">
                         <div class="course-cover">
                             <div class="college-label"> 兴趣 </div>
-                            <img alt="课程封面图" title="钢琴精品试学课" class="course-image" src="__TMPL__/blog/public/assets/images/course/wine.png" lazy="loaded">
+                            <img alt="课程封面图" title="钢琴精品试学课" class="course-image" src="__TMPL__/portal/public/assets/images/course/wine.png" lazy="loaded">
                         </div>
                         <div class="course-border">
                             <h4 class="course-title">钢琴精品试学课</h4>
@@ -25,7 +25,7 @@
                     <div class="course-item">
                         <div class="course-cover">
                             <div class="college-label"> 兴趣 </div>
-                            <img alt="课程封面图" title="钢琴精品试学课" class="course-image"  src="__TMPL__/blog/public/assets/images/course/piano.png" lazy="loaded">
+                            <img alt="课程封面图" title="钢琴精品试学课" class="course-image"  src="__TMPL__/portal/public/assets/images/course/piano.png" lazy="loaded">
                         </div>
                         <div class="course-border">
                             <h4 class="course-title">钢琴精品试学课</h4>
@@ -39,7 +39,7 @@
                     <div class="course-item">
                         <div class="course-cover">
                             <div class="college-label"> 兴趣 </div>
-                            <img alt="课程封面图" title="钢琴精品试学课" class="course-image" src="__TMPL__/blog/public/assets/images/course/jingpin.png" lazy="loaded">
+                            <img alt="课程封面图" title="钢琴精品试学课" class="course-image" src="__TMPL__/portal/public/assets/images/course/jingpin.png" lazy="loaded">
                         </div>
                         <div class="course-border">
                             <h4 class="course-title">钢琴精品试学课</h4>
@@ -53,7 +53,7 @@
                     <div class="course-item">
                         <div class="course-cover">
                             <div class="college-label"> 兴趣 </div>
-                            <img alt="课程封面图" title="钢琴精品试学课" class="course-image" src="__TMPL__/blog/public/assets/images/course/gufeng.png" lazy="loaded">
+                            <img alt="课程封面图" title="钢琴精品试学课" class="course-image" src="__TMPL__/portal/public/assets/images/course/gufeng.png" lazy="loaded">
                         </div>
                         <div class="course-border">
                             <h4 class="course-title">钢琴精品试学课</h4>
@@ -67,7 +67,7 @@
                     <div class="course-item">
                         <div class="course-cover">
                             <div class="college-label"> 兴趣 </div>
-                            <img alt="课程封面图" title="钢琴精品试学课" class="course-image" src="__TMPL__/blog/public/assets/images/course/jingpin.png" lazy="loaded">
+                            <img alt="课程封面图" title="钢琴精品试学课" class="course-image" src="__TMPL__/portal/public/assets/images/course/jingpin.png" lazy="loaded">
                         </div>
                         <div class="course-border">
                             <h4 class="course-title">钢琴精品试学课</h4>
@@ -81,7 +81,7 @@
                     <div class="course-item">
                         <div class="course-cover">
                             <div class="college-label"> 兴趣 </div>
-                            <img alt="课程封面图" title="钢琴精品试学课" class="course-image" src="__TMPL__/blog/public/assets/images/course/gufeng.png" lazy="loaded">
+                            <img alt="课程封面图" title="钢琴精品试学课" class="course-image" src="__TMPL__/portal/public/assets/images/course/gufeng.png" lazy="loaded">
                         </div>
                         <div class="course-border">
                             <h4 class="course-title">钢琴精品试学课</h4>
@@ -98,4 +98,11 @@
             <include file="./block/page" />
         </div>
     </section>
+</block>
+<block name="myscript">
+    <script>
+        $('.course-item').click(function () {
+            location.href = "{:url('portal/index/courseDetail')}"
+        });
+    </script>
 </block>

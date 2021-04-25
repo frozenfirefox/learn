@@ -9,20 +9,18 @@
     <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
     <![endif]-->
-    <link href="__TMPL__/blog/public/assets/css/style.css" rel="stylesheet"/>
+    <link href="__TMPL__/portal/public/assets/css/style.css" rel="stylesheet"/>
+    <style>
+        .pc-box{
+            padding: 0
+        }
+    </style>
 </block>
 <block name="title">
-    {$title}
-</block>
-<block name="header">
-    <include file="block/header" />
+    {$title| default = '春暖花开'}
 </block>
 <block name="main">
-    <include file="block/main" />
-</block>
-<block name="footer">
-    <include file="block/footer" />
-</block>
-<block name="script">
-    <include file="block/script" />
+    <div class="one-page">
+        <img src="__TMPL__/portal/public/assets/images/activities/act-det.jpg">
+    </div>
 </block>

@@ -2,37 +2,37 @@
     <div class="nav-header-center">
         <div class="nav-header-center-logo">
             <a href="/">
-                <img src="__TMPL__/blog/public/assets/images/logo.png"/>
+                <img src="__TMPL__/portal/public/assets/images/logo.png"/>
             </a>
         </div>
         <div class="nav-header-center-bar">
             <div class="bar-list">
                 <if condition="$nav eq ''">
-                    <a href="{:url('blog/index/index')}" class="active">广场</a>
+                    <a href="{:url('portal/index/index')}" class="active">广场</a>
                     <else />
-                    <a href="{:url('blog/index/index')}" >广场</a>
+                    <a href="{:url('portal/index/index')}" >广场</a>
                 </if>
             </div>
             <div class="bar-list">
                 <if condition="$nav eq 'trial'">
-                    <a href="{:url('blog/index/trial')}" class="active">体验课</a>
+                    <a href="{:url('portal/index/trial')}" class="active">体验课</a>
                     <else />
-                    <a href="{:url('blog/index/trial')}">体验课</a>
+                    <a href="{:url('portal/index/trial')}">体验课</a>
                 </if>
             </div>
             <div class="bar-list">
                 <if condition="$nav eq 'explore'">
-                    <a href="{:url('blog/index/explore')}" class="active">正式课</a>
+                    <a href="{:url('portal/index/explore')}" class="active">正式课</a>
                     <else />
-                    <a href="{:url('blog/index/explore')}">正式课</a>
+                    <a href="{:url('portal/index/explore')}">正式课</a>
                 </if>
 
             </div>
             <div class="bar-list">
                 <if condition="$nav eq 'activities'">
-                    <a href="{:url('blog/index/activities')}" class="active">活动</a>
+                    <a href="{:url('portal/index/activities')}" class="active">活动</a>
                     <else />
-                    <a href="{:url('blog/index/activities')}">活动</a>
+                    <a href="{:url('portal/index/activities')}">活动</a>
                 </if>
             </div>
         </div>
