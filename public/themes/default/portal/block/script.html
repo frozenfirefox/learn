@@ -13,7 +13,12 @@
         }
     });
     $('.modal-dialog-publish').modal().css({
-        'margin-top': function () {s
+        'margin-top': function () {
+            return - ($(this).height() / 2);
+        }
+    });
+    $('.endLiving').modal().css({
+        'margin-top': function () {
             return - ($(this).height() / 2);
         }
     });
@@ -77,6 +82,48 @@
 
 <include file="block/publish" />
 
+<div class="modal fade" id="endLiving" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content endLiving">
+            <div class="content container-main">
+                <div class="container-diag">
+                    <img src="__TMPL__/portal/public/assets/images/close.png" alt="关闭按钮" class="close-img close-img-end">
+                    <div class="live-status end">直播已结束！</div>
+                    <button>知道啦</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--this is the right -->
+<div class="big-box">
+    <div class="service-wrapper">
+        <div class="margin-wrapper-servicer goto-dp">
+            <a><i class="serviser-icon goto-dp-icon"></i><div>走进大鹏</div></a>
+        </div>
+        <div class="margin-wrapper-servicer goto-police">
+            <a><i class="serviser-icon pec-icon"></i><div>反诈防骗</div></a>
+        </div><!---->
+        <div class="margin-wrapper-servicer">
+            <a onclick="doyoo.util.openChat('g=10084844'); return false" target="_blank"><i class="serviser-icon online-icon"></i><div>在线咨询</div></a>
+        </div>
+        <div class="margin-wrapper-servicer">
+            <a onclick="doyoo.util.openChat('g=10084845'); return false" target="_blank"><i class="serviser-icon suggest-icon"></i><div>建议投诉</div></a>
+        </div>
+        <div class="margin-wrapper-servicer">
+            <a onclick="doyoo.util.openChat('g=10084846'); return false" target="_blank"><i class="serviser-icon find-icon"></i><div>找回密码</div></a>
+        </div>
+        <div class="margin-wrapper-servicer gov-tel"><a><i class="serviser-icon"></i><p>官方电话</p><p class="font-s">周一至周日</p><p>24小时在线</p></a>
+            <span class="gov-tel-animation">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAADyUlEQVQ4T3WVW2gdVRSG1/rXnplzmZPTJDQxYAOxQo0N1IcGfSgYn2qpUt9EbVqLoA9qQUlJLdZWa9VoKfZBRChCUdQHLxWKybF5seJDClWivrVRIQQaNebSc5k5c9ky+1ySnOjAMHv2Xuubf639zwzTmsMtDA8okaNgrtiZ/Gm9eVsZnp+KlUgSJgphRPDJLZbmbztSJiK9Nj8Zc2PCnTzwgMT8FYPzAAiQaWq/81FJ20FrUnKPKodxFCzM7zhSWrtugO7l/UMcYwJMTgJjczKxsj6Qrm1vNxJk5Y9jIOojUdc03C8DZP+yVGZprv+5hUaMAebG918i5r1IIHVgfRyLcod1rmcqiVPen0NMwRCE72dwB7P1ppfu+VRFleW5/mMGWlM4/sQEM3bX1CVQplrZyb2a4LbeZ00Po8WtRFIO7Lb5VLjwpKJ4VIv1RiXedIG0mk/KryksHDxLOn6hoXAVDGJlvwf39rMGWJkrsPBWQCYj5EYt8fYIxSf92NlTDqzriztfneXu6Xey3vLsfXF58VuAkZTcBCp1Rbd1PKPIqSbASIeWFZYHhePXAcz6aDuY4dJFYvxU8tzX2Erd5O7pk13E5Fbmfz/HWj+0Dui4+yTb/mvrLktYHlBc/TrU9j7Lol0CeqQUZR4kTUVu/360N06lFRf/7tXhyjfMSK+WrK4is/lxX4cb/LZJ+T9GjONQLIr5eCnKDgYcBJyfernPCX0kKvzKP08xRS81gOaqrDO+1fZ+q8oM/B1xLNfFZtsG7q14XPBipTk/NdJHUGZzdOAD3tJ5kLFFvZeISNTzvsoVWqFONTJ5vi21CuJQc8fVF7dEQWDXJpSmMOgQXfmCQb3MIIgxesjgo5VILiZhWVsNQOhhIv75VqQvNY2vOWD3h5Eu8fycmbRVvVfeHSoKPgc4b4zOTFDQRPIxA78o6NMEWElLNPFnpRV9IiAdRpAid0+PZL2VqLv2FK9ZlYrje5jjCwC7Zue5YfpVWzV6TcB3S7eqh+20NZP0gFOXn97igKwmrd4TYb1TkT7P4Nz/A5MHMBFjfObusb2mqd2F4ayXcesq17fe0lG/CD5kcBcgJrnx8VjnBuDmjf6xnubnKzd5oBOk8gbHtV0n3zcXyaS6HEfOMTC4EVhXKHJq5q63XmkCzTtdh9Ywq4eTGIBC5bruISg5DEamaSuBFpZTN7aPnTBaWr2VlL8M6iS2VOuasYySzlQu/ZgAuyBCEH73t+1nPmnEbgDWF5gKwxmXKGv5lKo4ZH4B5FOkHPKKRCXa/dF//gL+BUu8P676a2bSAAAAAElFTkSuQmCC"> 400-101-8899
+            </span>
+        </div>
+    </div>
+    <div id="to-top" style="">
+        <i></i>
+    </div>
+</div>
 <script>
     $('#myModal').on('show.bs.modal', function (e) {
         $('#drag').html('');
@@ -87,5 +134,14 @@
     });
     $('.close-btn-x').click(function () {
         $('#myPublishModal').modal('hide');
+    });
+    $('.close-img-end').click(function () {
+        $('#endLiving').modal('hide');
+    });
+    $('.endLiving').find('button').click(function () {
+        $('#endLiving').modal('hide');
+    });
+    $('.login-btn').click(function () {
+        $('#myModal').modal('show');
     });
 </script>

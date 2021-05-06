@@ -1626,3 +1626,276 @@ div.course-right_area>div>ul.course-list>li .list_right .study_num {
     color: #fa6400;
 }
 
+/*this is the course-mask*/
+.course-mask {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    cursor: pointer;
+    z-index: 9;
+    opacity: 0;
+    width: 283px;
+    height: 190px;
+    border-radius: 8px 8px 0 0;
+}
+.course-mask:hover {
+    background: rgba(0,0,0,.4);
+    -webkit-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+    opacity: 1;
+}
+.course-cover>.course-state {
+    position: absolute;
+    top: 8px;
+    left: 12px;
+}
+.course-cover>.total-student {
+    position: absolute;
+    bottom: 8px;
+    right: 12px;
+    height: 20px;
+    line-height: 18px;
+    padding: 3px 7px;
+    font-size: 14px;
+    font-family: DINAlternate-Bold,DINAlternate;
+    color: #fff;
+    background: rgba(14,14,14,.62);
+    border-radius: 13px;
+}
+.course-cover>.end {
+    height: 20px;
+    line-height: 18px;
+    padding: 3px 10px;
+    font-size: 14px;
+    font-family: PingFangSC-Medium,PingFang SC;
+    font-weight: 500;
+    color: #fff;
+    background: #000;
+    border-radius: 20px;
+}
+.course-item-300{
+    height: 300px !important;
+    border: 1px solid #e7e9e9;
+}
+.course-item>.course-chapters {
+    height: 20px;
+    line-height: 20px;
+    margin: 0 0 12px 8px;
+    text-shadow: 0 2px 12px rgba(100,156,126,.25);
+    font-size: 14px;
+    font-family: PingFangSC-Regular,PingFang SC;
+    font-weight: 400;
+    color: #747c80;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.course-item>.course-teacher img {
+    width: 20px;
+    height: 20px;
+    margin: 0 8px;
+    border-radius: 10px;
+}
+.course-item>.course-teacher span {
+    height: 20px;
+    font-size: 14px;
+    font-family: PingFangSC-Regular, PingFang SC;
+    font-weight: 400;
+    color: #747c80;
+    line-height: 20px;
+}
+
+/*this is the end*/
+.container-main{
+    width: 260px;
+    height: 253px;
+    margin: 0 auto;
+    opacity: 1;
+    display: block;
+}
+.container-diag {
+    position: relative;
+    height: 253px;
+    background-image: url(../images/end-trial.png);
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+.live-status {
+    margin-top: 30px;
+    font-size: 16px;
+    font-family: PingFangSC-Semibold,PingFang SC;
+    font-weight: 600;
+    color: #36404a;
+}
+.container-diag>button {
+    cursor: pointer;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 20px;
+    width: 200px;
+    height: 39px;
+    margin: 0 auto;
+    border: none;
+    border-radius: 8px;
+    background: -webkit-gradient(linear,left top,right top,from(#1cdc94),to(#0cb65b));
+    background: linear-gradient(90deg,#1cdc94,#0cb65b);
+    font-size: 14px;
+    font-family: PingFangSC-Medium,PingFang SC;
+    font-weight: 500;
+    color: #fff;
+    line-height: 15px;
+}
+.endLiving{
+    margin-top: 50%;
+}
+.close-img-end {
+    position: absolute;
+    top: -40px;
+    right: -50px;
+    cursor: pointer;
+    vertical-align: middle;
+}
+
+/*this is the right float*/
+.big-box .service-wrapper, .big-box {
+    background: #fff;
+    -webkit-box-shadow: 0 2px 9px 0 rgba(0,0,0,.13);
+    box-shadow: 0 2px 9px 0 rgba(0,0,0,.13);
+    border-radius: 6px 0 0 6px;
+    position: fixed;
+    bottom: 8%;
+    right: 0;
+    z-index: 99;
+    width: 69px;
+}
+.margin-wrapper-servicer a {
+    text-align: center;
+    margin: 5px auto 3px;
+    border-bottom: 1px solid #ebebeb;
+    display: inline-block;
+    height: 47px;
+    line-height: 1.5;
+}
+.margin-wrapper-servicer {
+    margin: 0 4px;
+    position: relative;
+    text-align: center;
+    cursor: pointer;
+    padding: 0 5px;
+}
+.gov-tel {
+     font-size: 10px;
+     font-family: PingFangSC-Regular,PingFang SC,Helvetica,STHeiti,Microsoft YaHei,"sans-serif";
+     font-weight: 400;
+     margin: 0;
+     position: relative;
+     padding: 0;
+ }
+.big-box #to-top {
+    width: 100%;
+    height: 43px;
+    background: #fff;
+    -webkit-box-shadow: 0 2px 9px 0 rgba(0,0,0,.13);
+    box-shadow: 0 2px 9px 0 rgba(0,0,0,.13);
+    border-radius: 8px 0 0 8px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    position: absolute;
+    bottom: -50px;
+    cursor: pointer;
+}
+.big-box #to-top>i {
+    width: 22px;
+    height: 22px;
+    display: inline-block;
+    background: url(../images/to-top.png) no-repeat 50%;
+}
+.gov-tel>a {
+    color: #18252c;
+    padding-bottom: 14px;
+    border-bottom: none;
+    height: auto;
+    line-height: 1.5;
+}
+.gov-tel .gov-tel-animation {
+    width: 125px;
+    height: 40px;
+    background: url(../images/tel-bg.png) no-repeat 50%;
+    display: inline-block;
+    position: absolute;
+    left: -132px;
+    top: 2px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    font-size: 12px;
+    font-family: PingFangSC-Semibold,PingFang SC,Helvetica,STHeiti,Microsoft YaHei,"sans-serif";
+    -webkit-animation: gov-tel-animation-data-v-8ea61648 1s ease-in-out infinite;
+    animation: gov-tel-animation-data-v-8ea61648 1s ease-in-out infinite;
+    font-weight: 600;
+    color: #0cb65b;
+}
+.margin-wrapper-servicer a>div {
+    font-size: 12px;
+    font-family: PingFangSC-Regular,PingFang SC,Helvetica,STHeiti,Microsoft YaHei,"sans-serif";
+    font-weight: 400;
+    color: #18252c;
+    padding-top: 1px;
+}
+.margin-wrapper-servicer a .serviser-icon {
+    width: 22px;
+    height: 22px;
+    display: inline-block;
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAWCAYAAADEtGw7AAAByElEQVRIS73UP0gbcRQH8O97mmQQu9SiQ0BwEhyK4tCCUDMJbnLxRbnEUrC4WLrqlk1xagfHZEiiXuIpZBD8C4qCk9C5lELpYCdBFDKo90pA2zP/uCPoze997vvj996P8EQfPZGL54XThcKrgPI8VPuZOW2KkfV7sqrEa7bdf3ujeyC8vMcUrCMJkT0/eBWcza9vQjH2CCEcJWLjw83BVuEbQK8rEA13dgQjkcitV7xW4kMo3rkBAs7iE+ODXtFyXRW8YtlfHOhnF3IQYhURuWgKzuTtUVLdekAItBifiM77QWsmTiaTrT29fb8J6CoXKHBRYu2ZEbn0g9dckJxlzyl04V9qouV4LDrbNJxKpdoDbS++P6QG4DDxiBkz9r3idVc6m7cnobrqgv7wHb8xTeOXF7zhW5GzbEuhMRf0A0RzUOc9QG8BKobY+SQipcqfNYSLxWL7VenmVKF99VISaDfIzqiI3FXMfuOD5XIbYW1xTkDorlfJzNOmGClfcLm4jKPV2VagZnIFLU5VzLrn9ziT2Wmj4NVXQD8A4P8LhJ8a4KGEYZz7TuxuyFobA0rOR1L0gnAcIl0SkWtfl+dlrOpfajPdDXr/AqTcjhdWXZX2AAAAAElFTkSuQmCC) no-repeat 50%;
+}
+.margin-wrapper-servicer a .goto-dp-icon {
+    background-image: url(../images/dp.png);
+}
+.margin-wrapper-servicer a .pec-icon {
+    background-image: url(../images/zp.png);
+}
+.margin-wrapper-servicer a .online-icon {
+    background-image: url(../images/service.png);
+}
+.margin-wrapper-servicer a .suggest-icon {
+    background-image: url(../images/advise.png);
+}
+.margin-wrapper-servicer a .find-icon {
+    background-image: url(../images/lock.png);
+}
+.gov-tel .font-s {
+    margin: 2px 0;
+}
