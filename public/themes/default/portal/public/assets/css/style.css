@@ -1844,6 +1844,13 @@ div.course-right_area>div>ul.course-list>li .list_right .study_num {
     height: auto;
     line-height: 1.5;
 }
+@keyframes gov-tel-animation
+{
+    0%{left: -132px;}
+    50%{left: -140px;}
+    100%{left: -132px;}
+}
+
 .gov-tel .gov-tel-animation {
     width: 125px;
     height: 40px;
@@ -1863,11 +1870,12 @@ div.course-right_area>div>ul.course-list>li .list_right .study_num {
     align-items: center;
     font-size: 12px;
     font-family: PingFangSC-Semibold,PingFang SC,Helvetica,STHeiti,Microsoft YaHei,"sans-serif";
-    -webkit-animation: gov-tel-animation-data-v-8ea61648 1s ease-in-out infinite;
-    animation: gov-tel-animation-data-v-8ea61648 1s ease-in-out infinite;
+    animation: gov-tel-animatio 1s ease-in-out infinite;
+    -webkit-animation: gov-tel-animation 1s ease-in-out infinite;
     font-weight: 600;
     color: #0cb65b;
 }
+
 .margin-wrapper-servicer a>div {
     font-size: 12px;
     font-family: PingFangSC-Regular,PingFang SC,Helvetica,STHeiti,Microsoft YaHei,"sans-serif";
