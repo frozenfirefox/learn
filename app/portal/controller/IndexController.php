@@ -66,6 +66,15 @@ class IndexController extends HomeBaseController
     }
 
     /**
+     * trial_detail
+     */
+    public function trial_detail(){
+        $this->assign("nav", "");
+        $this->assign("title", "详情-试听课");
+        return $this->fetch(':trial_detail');
+    }
+
+    /**
      * actDetail
      */
     public function actDetail(){
