@@ -10,26 +10,25 @@
                         <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
                             <!-- Indicators -->
                             <ol class="carousel-indicators">
-                                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-                                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                                <slides id="1">
+                                    <if condition='$key eq 0'>
+                                        <li data-target="#carousel-example-generic" data-slide-to="{$key}" class="active"></li>
+                                    <else />
+                                        <li data-target="#carousel-example-generic" data-slide-to="{$key}"></li>
+                                    </if>
+                                </slides>
                             </ol>
 
                             <!-- Wrapper for slides -->
                             <div class="carousel-inner" role="listbox">
-                                <div class="item active">
-                                    <img src="http://image.dapengjiaoyu.com/2021-03-01/jxtuqmsukv/7437474954161_T1BFUkFURQ==.png" alt="...">
-                                    <div class="carousel-caption">
-                                        ...
+                                <slides id="1">
+                                    <div class="item <if condition='$key eq 0'>active</if>"  style="border-radius: 8px;">
+                                        <img src="{:cmf_get_image_url($vo.image)}" alt="{$vo.title|default='...'}">
+                                        <div class="carousel-caption">
+<!--                                            ...-->
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="item">
-                                    <img src="http://image.dapengjiaoyu.com/2021-04-12/jxtuqmsukv/862105028161_T1BFUkFURQ==.jpg" alt="...">
-                                    <div class="carousel-caption">
-                                        ...
-                                    </div>
-                                </div>
-                                ...
+                                </slides>
                             </div>
 
                             <!-- Controls -->

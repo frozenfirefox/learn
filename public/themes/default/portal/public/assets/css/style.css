@@ -179,6 +179,8 @@ a,a:hover{
 }
 .main>.main-box>.main-box-middle>.main-box-middle-content>.main-box-middle-content-wrap{
     /*height: 70px;*/
+    margin-top: 31px;
+    margin-bottom: 20px;
 }
 .main>.main-box>.main-box-right{
     /*background: #0F3A56;*/
@@ -1874,6 +1876,12 @@ div.course-right_area>div>ul.course-list>li .list_right .study_num {
     -webkit-animation: gov-tel-animation 1s ease-in-out infinite;
     font-weight: 600;
     color: #0cb65b;
+}
+.carousel-inner{
+    border-radius: 8px;
+}
+.left.carousel-control, .right.carousel-control{
+    border-radius: 8px;
 }
 
 .margin-wrapper-servicer a>div {
